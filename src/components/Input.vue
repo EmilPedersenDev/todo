@@ -1,6 +1,7 @@
 <template>
   <input
     type="text"
+    :id="id"
     placeholder="Add todo.."
     @input="onInput($event.target.value)"
     :value="value"
@@ -12,6 +13,10 @@ export default {
   name: "e-todo",
   props: {
     value: {
+      type: String,
+      default: "",
+    },
+    id: {
       type: String,
       default: "",
     },

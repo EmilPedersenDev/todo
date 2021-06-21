@@ -1,5 +1,5 @@
 <template>
-  <button @click="submit($event)" :class="classList">
+  <button @click="submit($event)" :class="classList" :id="id">
     <slot>click</slot>
   </button>
 </template>
@@ -11,6 +11,10 @@ export default {
     isDelete: {
       type: Boolean,
       default: false,
+    },
+    id: {
+      type: String,
+      default: "",
     },
   },
   methods: {
@@ -45,11 +49,15 @@ export default {
   }
 
   &--is-delete {
-    background: red;
+    background: #fff;
+    color: rgb(184, 0, 0);
+    font-weight: 300;
     border-radius: 5px;
     padding: 5px 10px;
+    border: 1.2px solid rgb(184, 0, 0);
     &:hover {
       background: rgb(184, 0, 0);
+      color: #fff;
     }
   }
 }

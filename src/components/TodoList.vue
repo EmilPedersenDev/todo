@@ -18,8 +18,12 @@
 </template>
 
 <script>
+import Button from "@/components/Button.vue";
 export default {
   name: "todo-list",
+  components: {
+    "e-button": Button,
+  },
   props: {
     todos: {
       type: Array,
@@ -27,8 +31,10 @@ export default {
         return [];
       },
     },
-    remove: {
-      type: Function,
+  },
+  methods: {
+    remove(i) {
+      this.$emit("remove", i);
     },
   },
 };
@@ -41,6 +47,10 @@ table {
   th,
   td {
     text-align: center;
+  }
+
+  td {
+    padding: 10px;
   }
   thead {
     tr {
@@ -64,6 +74,14 @@ table {
           border-bottom-left-radius: 0;
           border-bottom-right-radius: 0;
         }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background: #eff0f4;
       }
     }
   }

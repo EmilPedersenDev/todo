@@ -1,26 +1,31 @@
 <template>
   <div class="container">
     <div :class="['add-todo', todos.length > 0 && 'slide-up']">
-      <e-input v-model="todo" />
-      <e-button @click="submit">Add Todo</e-button>
+      <e-input v-model="todo" id="addTodoInput" />
+      <e-button @click="submit" id="submit">Add Todo</e-button>
     </div>
     <transition name="fade-in">
-      <todo-list v-if="todos.length > 0" :todos="todos" :remove="removeTodo" />
+      <todo-list v-if="todos.length > 0" :todos="todos" @remove="removeTodo" />
     </transition>
   </div>
 </template>
 
 <script>
 import TodoList from "../components/TodoList.vue";
+import Input from "@/components/Input.vue";
+import Button from "@/components/Button.vue";
 export default {
   name: "TodoForm",
   components: {
     "todo-list": TodoList,
+    "e-input": Input,
+    "e-button": Button,
   },
   data() {
     return {
       todo: "",
       todos: [],
+      activeTodoIndex: null,
     };
   },
   methods: {
