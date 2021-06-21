@@ -2,7 +2,7 @@
   <div class="container">
     <div :class="['add-todo', todos.length > 0 && 'slide-up']">
       <e-input v-model="todo" id="addTodoInput" />
-      <e-button @click="submit" id="submit">Add Todo</e-button>
+      <e-button @click="submit" id="submit">Add Todo!</e-button>
     </div>
     <transition name="fade-in">
       <todo-list v-if="todos.length > 0" :todos="todos" @remove="removeTodo" />
